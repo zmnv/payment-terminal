@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "МТС",
+    "slug": "mts"
+  },
+  {
+    "id": 2,
+    "title": "Билайн",
+    "slug": "beeline"
+  },
+  {
+    "id": 3,
+    "title": "Теле2",
+    "slug": "tele2"
+  },
+  {
+    "id": 4,
+    "title": "Мегафон",
+    "slug": "megafon"
+  },
+  {
+    "id": 5,
+    "title": "Ростелеком",
+    "slug": "rostelekom"
+  },
+  {
+    "id": 6,
+    "title": "Другой оператор",
+    "slug": "other"
+  }
+]

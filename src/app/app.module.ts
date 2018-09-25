@@ -1,7 +1,7 @@
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home.component';
@@ -18,6 +18,7 @@ import { NotfoundPageComponent } from './notfound/notfound.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full'},
       { path: 'payment', component: PaymentPageComponent },
