@@ -1,11 +1,9 @@
 <p>
-  <a routerLink="/">← выбрать оператора</a>
+  <a routerLink="/">← выбрать другого оператора</a>
 </p>
 
 <div *ngIf="currentProvider">
   <h2>{{currentProvider['title']}}</h2>
 
-  <div>
-
-  </div>
+  <app-payment-form></app-payment-form>
 </div>

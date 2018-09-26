@@ -1,0 +1,14 @@
+<form [formGroup]="paymentForm">
+  <div class="mar-b-24">
+    <label for="phone">Номер телефона:</label>
+    <input type="text" id="phone" formControlName="phone" prefix="+7 " mask="(000) 000 00 00" autofocus />
+  </div>
+  <div class="mar-b-24">
+    <label for="price">Сумма:</label>
+    <input type="number" id="price" formControlName="price" />
+  </div>
+
+  <button type="submit">Оплатить</button>
+</form>
+
+{{paymentForm.value | json}}
