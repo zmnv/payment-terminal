@@ -1,3 +1,11 @@
 <p>
-  payment works!
+  <a routerLink="/">← выбрать оператора</a>
 </p>
+
+<div *ngIf="currentProvider">
+  <h2>{{currentProvider['title']}}</h2>
+
+  <div>
+
+  </div>
+</div>

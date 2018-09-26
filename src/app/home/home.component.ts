@@ -10,7 +10,7 @@ import { MockService, ProvidersList } from '../mocks.service';
 
 export class HomePageComponent implements OnInit {
 
-  providersList: ProvidersList;
+  providersList: ProvidersList[];
 
   constructor( private _MockService: MockService ) {}
 
@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
   getProvidersList() {
     this._MockService.getProvidersList()
       .subscribe(
-        (result: ProvidersList) => this.providersList = result,
+        (result: ProvidersList[]) => this.providersList = result,
         error => console.log('ERROR:', error)
       );
   }

@@ -1,3 +1,7 @@
 <p>Выберите оператора:</p>
 
-{{providersList | json}}
+<app-provider-card
+  *ngFor="let provider of providersList"
+  [title]="provider['title']"
+  [slug]="provider['slug']"
+></app-provider-card>

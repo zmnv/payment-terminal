@@ -15,7 +15,7 @@ export class MockService {
   constructor(private http: HttpClient) { }
 
   getProvidersList () {
-    return this.http.get<ProvidersList>(this.mockData);
+    return this.http.get<ProvidersList[]>(this.mockData);
   }
 
 }

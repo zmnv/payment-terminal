@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home.component';
 import { PaymentPageComponent } from './payment/payment.component';
 import { NotfoundPageComponent } from './notfound/notfound.component';
+import { ProviderCardComponent } from './provider-view/provider-view.component';
 
 
 @NgModule({
@@ -14,14 +15,15 @@ import { NotfoundPageComponent } from './notfound/notfound.component';
     AppComponent,
     HomePageComponent,
     PaymentPageComponent,
-    NotfoundPageComponent
+    NotfoundPageComponent,
+    ProviderCardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full'},
-      { path: 'payment', component: PaymentPageComponent },
+      { path: 'payment/:slug', component: PaymentPageComponent },
       { path: '404', component: NotfoundPageComponent },
       { path: '**', redirectTo: '/404' },
     ])
