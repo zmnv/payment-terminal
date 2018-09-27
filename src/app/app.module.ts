@@ -23,6 +23,7 @@ import { PaymentFormComponent } from './payment/payment-form/payment-form.compon
     PaymentFormComponent
   ],
   imports: [
+    NgxMaskModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -31,8 +32,7 @@ import { PaymentFormComponent } from './payment/payment-form/payment-form.compon
       { path: 'payment/:slug', component: PaymentPageComponent },
       { path: '404', component: NotfoundPageComponent },
       { path: '**', redirectTo: '/404' },
-    ]),
-    NgxMaskModule.forRoot()
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

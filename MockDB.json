@@ -1,0 +1,118 @@
+{
+  "providers": [
+    {
+      "super": "kisa"
+    },
+    {
+      "id": 1,
+      "title": "МТС",
+      "slug": "mts"
+    },
+    {
+      "id": 2,
+      "title": "Билайн",
+      "slug": "beeline"
+    },
+    {
+      "id": 3,
+      "title": "Мегафон",
+      "slug": "megafon"
+    }
+  ],
+  "answers": {
+    "pay_success": "Успешно оплачено! Спасибо!",
+    "pay_error": "Ошибка оплаты. Пожалуйста, попробуйте еще раз.",
+    "armageddon": "<undefined> ошибка, спасение отсутствует. Приготовьтесь. next(?)"
+  },
+  "payments": [
+    {
+      "siga": "kika",
+      "id": 1
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 2
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 3
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 4
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 5
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 6
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 7
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 8
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 9
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 10
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 11
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 12
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 13
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 14
+    },
+    {
+      "data_send": "hello",
+      "provider": "sadasda",
+      "id": 15
+    },
+    {
+      "phone": "9689776778",
+      "price": 1,
+      "id": 16
+    },
+    {
+      "phone": "5656656565",
+      "price": 1,
+      "id": 17
+    },
+    {
+      "phone": "5656656565",
+      "price": 1,
+      "id": 18
+    }
+  ]
+}

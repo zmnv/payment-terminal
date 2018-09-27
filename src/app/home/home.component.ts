@@ -21,7 +21,10 @@ export class HomePageComponent implements OnInit {
   getProvidersList() {
     this._MockService.getProvidersList()
       .subscribe(
-        (result: ProvidersList[]) => this.providersList = result,
+        (data: ProvidersList[]) => {
+          this.providersList = data;
+          console.log('tak', data);
+        },
         error => console.log('ERROR:', error)
       );
   }

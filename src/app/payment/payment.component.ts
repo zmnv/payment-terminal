@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MockService, ProvidersList } from '../mocks.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -8,11 +8,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./payment.component.scss'],
   providers: [ MockService ]
 })
-export class PaymentPageComponent implements OnInit, OnDestroy {
+export class PaymentPageComponent implements OnInit {
 
   currentProvider: ProvidersList;
-
-  private routerParams: any;
 
   constructor(
     private _ActivatedRoute: ActivatedRoute,
@@ -21,26 +19,22 @@ export class PaymentPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.routerParams = this._ActivatedRoute.params.subscribe(params => {
+    this._ActivatedRoute.params.subscribe(params => {
       const slug = params['slug'];
       this.getProviderBySlug(slug);
     });
 
   }
 
-  ngOnDestroy() {
-    this.routerParams.unsubscribe();
-  }
-
   getProviderBySlug(slug: string) {
     this._MockService.getProvidersList()
-      .subscribe(result => {
-          this.currentProvider = result.find(element => element['slug'] === slug);
-          if (!this.currentProvider) this._Router.navigate(['404']);
+      .subscribe(
+        data => {
+          this.currentProvider = data.find(element => element['slug'] === slug);
+          if (!this.currentProvider) { this._Router.navigate(['404']); }
         },
         error => console.log('ERROR', error)
       );
   }
-
 
 }
