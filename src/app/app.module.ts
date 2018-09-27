@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home/home.component';
 import { PaymentPageComponent } from './payment/payment.component';
 import { NotfoundPageComponent } from './notfound/notfound.component';
-import { ProviderCardComponent } from './provider-view/provider-view.component';
+import { ProviderCardComponent } from './home/provider-view/provider-view.component';
 import { PaymentFormComponent } from './payment/payment-form/payment-form.component';
 
 @NgModule({

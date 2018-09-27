@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs/Subject';
 
 import { environment } from '../environments/environment';
 
@@ -16,14 +17,22 @@ export interface PaymentData {
 
 @Injectable()
 export class MockService {
-
-  mockData = '/assets/mocks/operators-list.json';
   mockServer = environment.apiCall;
+  providersListCache: ProvidersList[];
 
-  constructor(private http: HttpClient) { }
+  private providersListUpdater = new Subject<ProvidersList[]>();
+  providersListUpdaterSubscriber$ = this.providersListUpdater.asObservable();
 
-  getProvidersList () {
+  constructor(private http: HttpClient) {}
+
+  getProvidersList() {
     return this.http.get<ProvidersList[]>(`${this.mockServer}/providers`);
+  }
+
+  updateProvidersList() {
+    return this.getProvidersList().subscribe(result => {
+      this.providersListUpdater.next(result);
+    });
   }
 
   postPayMoneyToProvider(data) {
