@@ -14,6 +14,8 @@ import { ProviderCardComponent } from './home/provider-view/provider-view.compon
 import { PaymentFormComponent } from './payment/payment-form/payment-form.component';
 import { RequestCache } from './api/request-cache.service';
 import { CachingInterceptor } from './api/cache-interceptor.service';
+import { ErrorHandlerComponent } from './api/error-handler/error-handler.component';
+import { LoadingHandlerComponent } from './api/loading-handler/loading-handler.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CachingInterceptor } from './api/cache-interceptor.service';
     PaymentPageComponent,
     NotfoundPageComponent,
     ProviderCardComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+    ErrorHandlerComponent,
+    LoadingHandlerComponent
   ],
   imports: [
     NgxMaskModule.forRoot(),
