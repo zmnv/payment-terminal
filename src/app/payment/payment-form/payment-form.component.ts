@@ -12,6 +12,11 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
   @ViewChild('autofocus') private elementRef: ElementRef;
   paymentForm: FormGroup;
 
+  requestState = {
+    isLoading: false,
+    isError: false
+  };
+
   constructor(
     private _MockService: MockService,
     private fb: FormBuilder
@@ -49,10 +54,27 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     if (this.paymentForm.valid) {
+      this.requestState = {
+        isLoading: true,
+        isError: false
+      };
+
       this._MockService.postPayMoneyToProvider(this.paymentForm.value)
         .subscribe(
-          data => console.log('Data!', data),
-          error => console.log('Bad error:', error)
+          data => {
+            setTimeout(() => {
+              this.requestState = {
+                isLoading: false,
+                isError: false
+              };
+            }, 300);
+          },
+          error => {
+            this.requestState = {
+              isLoading: false,
+              isError: true
+            };
+          }
         );
     }
   }

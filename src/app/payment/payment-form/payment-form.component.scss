@@ -1,9 +1,5 @@
 @import '../../../styles/vars/entry';
 
-input.ng-touched.ng-invalid{
-  border-bottom-color: red;
- }
-
 .pay-form__label {
   display: block;
   margin-bottom: 6px;
@@ -18,6 +14,17 @@ input.ng-touched.ng-invalid{
   border-bottom-color: rgba(0,0,0,.06);
 
   outline: none;
+
+  &:focus {
+    border-bottom-color: $color-focus !important;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+  }
 }
 
 .pay-form__input_phone {
@@ -28,12 +35,18 @@ input.ng-touched.ng-invalid{
 
 .pay-form__input_price {
   font-size: 23px;
-  max-width: 105px;
+  max-width: 62px;
   font-weight: 500;
 }
 
 .pay-form__control {
   margin-bottom: 24px;
+}
+
+.pay-form__control__description {
+  font-size: 13px;
+  padding-top: 4px;
+  color: rgba(0, 0, 0, 0.32);
 }
 
 .pay-form__submit-button {
@@ -61,5 +74,11 @@ input.ng-touched.ng-invalid{
   &:active {
     background: $color-button-active;
   }
+}
+
+.pay-form__submit-error {
+  margin-top: 16px;
+  color: red;
+  font-size: 14px;
 }
 

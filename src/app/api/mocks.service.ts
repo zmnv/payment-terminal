@@ -18,7 +18,6 @@ export class MockService {
   }
 
   postPayMoneyToProvider(data) {
-    console.log('this.paymentForm data', data);
     return this.http.post<PaymentData>(`${this.mockServer}/payments`, data);
   }
 

@@ -6,7 +6,14 @@
   <div class="pay-form__control pad-b-8">
     <label class="pay-form__label" for="price">Сумма, руб:</label>
     <input class="pay-form__input pay-form__input_price" type="number" id="price" formControlName="price" />
+    <div class="pay-form__control__description">Мы принимаем платежи от 1 до 1 000 руб.</div>
   </div>
 
-  <button class="pay-form__submit-button" type="submit">Пополнить</button>
+  <button *ngIf="!requestState.isLoading" class="pay-form__submit-button" type="submit">Пополнить</button>
+  <app-loading *ngIf="requestState.isLoading"></app-loading>
+
+  <div *ngIf="requestState.isError" class="pay-form__submit-error">
+    Что-то пошло не так, попробуйте еще раз...
+  </div>
+
 </form>
