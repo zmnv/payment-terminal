@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MockService, ProvidersList } from '../mocks.service';
+import { MockService } from '../api/mocks.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProvidersList } from '../interfaces';
 
 @Component({
   selector: 'app-payment',

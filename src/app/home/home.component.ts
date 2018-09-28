@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MockService, ProvidersList } from '../mocks.service';
+import { MockService } from '../api/mocks.service';
+import { ProvidersList } from '../interfaces';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,9 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     console.log('init');
-    this.initProvidersList();
+    this.getProvidersList();
   }
+
 
   getProvidersList() {
     this._MockService.getProvidersList().subscribe(
@@ -29,21 +31,6 @@ export class HomePageComponent implements OnInit {
       },
       error => console.log('ERROR:', error)
     );
-  }
-
-  initProvidersList() {
-    this._MockService.updateProvidersList();
-    this._MockService.providersListUpdaterSubscriber$.subscribe(
-      (data: ProvidersList[]) => {
-        this.providersList = data;
-        console.log('tak', data);
-      },
-      error => console.log('ERROR:', error)
-    );
-  }
-
-  updateProvidersList() {
-    return this._MockService.updateProvidersList();
   }
 
 }

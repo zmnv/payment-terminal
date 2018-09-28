@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule } from 'ngx-mask';
@@ -12,6 +12,8 @@ import { PaymentPageComponent } from './payment/payment.component';
 import { NotfoundPageComponent } from './notfound/notfound.component';
 import { ProviderCardComponent } from './home/provider-view/provider-view.component';
 import { PaymentFormComponent } from './payment/payment-form/payment-form.component';
+import { RequestCache } from './api/request-cache.service';
+import { CachingInterceptor } from './api/cache-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { PaymentFormComponent } from './payment/payment-form/payment-form.compon
       { path: '**', redirectTo: '/404' },
     ])
   ],
-  providers: [],
+  providers: [
+    RequestCache,
+    { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

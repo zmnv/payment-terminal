@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
-import { MockService } from './../../mocks.service';
+import { MockService } from '../../api/mocks.service';
 
 @Component({
   selector: 'app-payment-form',
@@ -18,7 +18,7 @@ export class PaymentFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initNewForm();
+    this.initForm();
     this.paymentForm.controls['price'].valueChanges.subscribe(
       (changedValue) => {
         if (changedValue === 0 || changedValue < 0) { this.paymentForm.controls['price'].setValue(1); }
@@ -27,7 +27,7 @@ export class PaymentFormComponent implements OnInit {
     );
   }
 
-  initOldForm() {
+  initForm() {
     this.paymentForm = this.fb.group({
       phone: ['', [
         Validators.required,
@@ -40,22 +40,6 @@ export class PaymentFormComponent implements OnInit {
         Validators.max(1000),
         Validators.pattern(/^\d+$/)
       ]]
-    });
-  }
-
-  initNewForm() {
-    this.paymentForm = new FormGroup({
-      phone: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(10),
-      ]),
-      price: new FormControl(1, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(1000),
-        Validators.pattern(/^\d+$/)
-      ])
     });
   }
 
