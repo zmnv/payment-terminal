@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { MockService } from '../../api/mocks.service';
@@ -9,13 +9,18 @@ import { MockService } from '../../api/mocks.service';
   styleUrls: ['./payment-form.component.scss']
 })
 export class PaymentFormComponent implements OnInit, AfterViewInit {
+  @Input() operatorSlug: string;
+
   @ViewChild('autofocus') private elementRef: ElementRef;
   paymentForm: FormGroup;
 
   requestState = {
     isLoading: false,
+    isSuccess: false,
     isError: false
   };
+
+  showPhoneValidationError = false;
 
   constructor(
     private _MockService: MockService,
@@ -54,29 +59,36 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     if (this.paymentForm.valid) {
-      this.requestState = {
-        isLoading: true,
-        isError: false
-      };
+      this.showPhoneValidationError = false;
+      this.setRequestState(true, false, false);
 
-      this._MockService.postPayMoneyToProvider(this.paymentForm.value)
+      this._MockService.postPayMoneyToProvider(this.operatorSlug, this.paymentForm.value)
         .subscribe(
           data => {
             setTimeout(() => {
-              this.requestState = {
-                isLoading: false,
-                isError: false
-              };
-            }, 300);
+              this.setRequestState(false, true, false);
+              this.getRandomTimeError();
+
+              console.log('Успех! Добавлено в базу данных:', data);
+            }, 800);
           },
-          error => {
-            this.requestState = {
-              isLoading: false,
-              isError: true
-            };
-          }
+          error => this.setRequestState(false, false, true)
         );
+    } else {
+      this.showPhoneValidationError = true;
     }
+  }
+
+  setRequestState(isLoading, isSuccess, isError) {
+    this.requestState = {
+      isLoading,
+      isSuccess,
+      isError,
+    };
+  }
+
+  getRandomTimeError() {
+    if (Math.random() >= 0.5) { this.setRequestState(false, false, true); }
   }
 
 }

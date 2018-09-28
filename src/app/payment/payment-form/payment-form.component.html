@@ -2,6 +2,9 @@
   <div class="pay-form__control">
     <label class="pay-form__label" for="phone">Номер телефона:</label>
     <input class="pay-form__input pay-form__input_phone" type="text" formControlName="phone" prefix="+7 " mask="(000) 000 00 00" #autofocus />
+    <div *ngIf="showPhoneValidationError && !paymentForm.valid" class="pay-form__submit-error">
+      ↑ Введите корректный номер телефона.
+    </div>
   </div>
   <div class="pay-form__control pad-b-8">
     <label class="pay-form__label" for="price">Сумма, руб:</label>
@@ -14,6 +17,10 @@
 
   <div *ngIf="requestState.isError" class="pay-form__submit-error">
     Что-то пошло не так, попробуйте еще раз...
+  </div>
+
+  <div *ngIf="requestState.isSuccess" class="pay-form__submit-success">
+    Успешно! Счёт пополнен.
   </div>
 
 </form>

@@ -8,7 +8,7 @@
 
   <div *ngIf="currentProvider">
     <h2 class="mar-b-8"><b>{{currentProvider['title']}}</b></h2>
-    <app-payment-form></app-payment-form>
+    <app-payment-form [operatorSlug]="currentSlug"></app-payment-form>
   </div>
 
   <app-error *ngIf="requestState['isError']" (handleRefreshRequest)="getProviderBySlug(currentSlug)"></app-error>

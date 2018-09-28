@@ -17,8 +17,12 @@ export class MockService {
     return this.http.get<ProvidersList[]>(`${this.mockServer}/providers`);
   }
 
-  postPayMoneyToProvider(data) {
-    return this.http.post<PaymentData>(`${this.mockServer}/payments`, data);
+  postPayMoneyToProvider(operatorSlug, data) {
+    const result = {
+      providerSlug: operatorSlug,
+      order: data
+    };
+    return this.http.post<PaymentData>(`${this.mockServer}/payments`, result);
   }
 
 }

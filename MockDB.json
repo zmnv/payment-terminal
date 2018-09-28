@@ -25,6 +25,61 @@
     "armageddon": "<undefined> ошибка, спасение отсутствует. Приготовьтесь. next(?)"
   },
   "payments": [
-
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "8999999999",
+        "price": 1
+      },
+      "id": 1
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9595959595",
+        "price": 1
+      },
+      "id": 2
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9595959595",
+        "price": 1000
+      },
+      "id": 3
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "4545454545",
+        "price": 105
+      },
+      "id": 4
+    },
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "9999999999",
+        "price": 1000
+      },
+      "id": 5
+    },
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "9999999999",
+        "price": 1000
+      },
+      "id": 6
+    },
+    {
+      "providerSlug": "megafon",
+      "order": {
+        "phone": "9999999999",
+        "price": 1
+      },
+      "id": 7
+    }
   ]
 }

@@ -77,8 +77,13 @@
 }
 
 .pay-form__submit-error {
-  margin-top: 16px;
+  margin-top: 8px;
   color: red;
   font-size: 14px;
+}
+
+.pay-form__submit-success {
+  margin-top: 16px;
+  color: #5fab08;
 }
 
