@@ -1,14 +1,12 @@
 <form [formGroup]="paymentForm" (submit)="onSubmit()" novalidate>
-  <div class="mar-b-24">
-    <label for="phone">Номер телефона:</label>
-    <input type="text" formControlName="phone" prefix="+7 " mask="(000) 000 00 00" autofocus />
+  <div class="pay-form__control">
+    <label class="pay-form__label" for="phone">Номер телефона:</label>
+    <input class="pay-form__input pay-form__input_phone" type="text" formControlName="phone" prefix="+7 " mask="(000) 000 00 00" #autofocus />
   </div>
-  <div class="mar-b-24">
-    <label for="price">Сумма:</label>
-    <input type="number" id="price" formControlName="price" />
+  <div class="pay-form__control pad-b-8">
+    <label class="pay-form__label" for="price">Сумма, руб:</label>
+    <input class="pay-form__input pay-form__input_price" type="number" id="price" formControlName="price" />
   </div>
 
-  <button type="submit">Оплатить</button>
+  <button class="pay-form__submit-button" type="submit">Пополнить</button>
 </form>
-
-{{paymentForm.value | json}}

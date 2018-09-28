@@ -13,23 +13,37 @@ export class HomePageComponent implements OnInit {
 
   providersList: ProvidersList[];
 
-  constructor( private _MockService: MockService ) {
-    console.log('>construct');
-  }
+  requestState = {
+    isLoading: false,
+    isError: false
+  };
+
+  constructor( private _MockService: MockService ) {}
 
   ngOnInit() {
-    console.log('init');
     this.getProvidersList();
   }
 
-
   getProvidersList() {
+    this.requestState = {
+      isLoading: true,
+      isError: false
+    };
+
     this._MockService.getProvidersList().subscribe(
       (data: ProvidersList[]) => {
         this.providersList = data;
-        console.log('tak', data);
+        this.requestState = {
+          isLoading: false,
+          isError: false
+        };
       },
-      error => console.log('ERROR:', error)
+      error => {
+        this.requestState = {
+          isLoading: false,
+          isError: true
+        };
+      }
     );
   }
 

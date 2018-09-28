@@ -1,3 +1,65 @@
+@import '../../../styles/vars/entry';
+
 input.ng-touched.ng-invalid{
-  border-color: red;
+  border-bottom-color: red;
  }
+
+.pay-form__label {
+  display: block;
+  margin-bottom: 6px;
+  color: $color-text-gray;
+  font-size: 14px;
+}
+
+.pay-form__input {
+  width: 100%;
+  padding: 6px 0;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(0,0,0,.06);
+
+  outline: none;
+}
+
+.pay-form__input_phone {
+  font-size: 23px;
+  max-width: 212px;
+  font-weight: 500;
+}
+
+.pay-form__input_price {
+  font-size: 23px;
+  max-width: 105px;
+  font-weight: 500;
+}
+
+.pay-form__control {
+  margin-bottom: 24px;
+}
+
+.pay-form__submit-button {
+  background: $color-button;
+  border: 0;
+  padding: 8px 15px;
+  padding-bottom: 10px;
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.16);
+  letter-spacing: -0.25px;
+
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background: $color-button-hover;
+  }
+  &:focus {
+    background: $color-button-hover;
+    box-shadow: 0 0 0 4px $color-button-focus;
+  }
+  &:active {
+    background: $color-button-active;
+  }
+}
+

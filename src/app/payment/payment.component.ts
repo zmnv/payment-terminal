@@ -12,6 +12,12 @@ import { ProvidersList } from '../interfaces';
 export class PaymentPageComponent implements OnInit {
 
   currentProvider: ProvidersList;
+  currentSlug: string;
+
+  requestState = {
+    isLoading: false,
+    isError: false
+  };
 
   constructor(
     private _ActivatedRoute: ActivatedRoute,
@@ -21,20 +27,33 @@ export class PaymentPageComponent implements OnInit {
 
   ngOnInit() {
     this._ActivatedRoute.params.subscribe(params => {
-      const slug = params['slug'];
-      this.getProviderBySlug(slug);
+      this.currentSlug = params['slug'];
+      this.getProviderBySlug(this.currentSlug);
     });
 
   }
 
   getProviderBySlug(slug: string) {
+    this.requestState = {
+      isLoading: true,
+      isError: false
+    };
     this._MockService.getProvidersList()
       .subscribe(
         data => {
           this.currentProvider = data.find(element => element['slug'] === slug);
+          this.requestState = {
+            isLoading: false,
+            isError: false
+          };
           if (!this.currentProvider) { this._Router.navigate(['404']); }
         },
-        error => console.log('ERROR', error)
+        error => {
+          this.requestState = {
+            isLoading: false,
+            isError: true
+          };
+        }
       );
   }
 

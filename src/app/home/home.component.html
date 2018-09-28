@@ -1,5 +1,7 @@
 <div class="pay-layout__main__white">
 
+  <app-loading *ngIf="requestState['isLoading']"></app-loading>
+
   <div *ngIf="providersList">
     <div class="mar-b-16">Выберите оператора:</div>
 
@@ -10,8 +12,6 @@
     ></app-provider-card>
   </div>
 
-  <div *ngIf="!providersList">
-    Извините, не можем получить список операторов.
-  </div>
+  <app-error *ngIf="requestState['isError']" (handleRefreshRequest)="getProvidersList()"></app-error>
 
 </div>

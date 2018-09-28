@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { MockService } from '../../api/mocks.service';
@@ -8,8 +8,8 @@ import { MockService } from '../../api/mocks.service';
   templateUrl: './payment-form.component.html',
   styleUrls: ['./payment-form.component.scss']
 })
-export class PaymentFormComponent implements OnInit {
-
+export class PaymentFormComponent implements OnInit, AfterViewInit {
+  @ViewChild('autofocus') private elementRef: ElementRef;
   paymentForm: FormGroup;
 
   constructor(
@@ -22,9 +22,13 @@ export class PaymentFormComponent implements OnInit {
     this.paymentForm.controls['price'].valueChanges.subscribe(
       (changedValue) => {
         if (changedValue === 0 || changedValue < 0) { this.paymentForm.controls['price'].setValue(1); }
-        if (changedValue > 10000) { this.paymentForm.controls['price'].setValue(10000); }
+        if (changedValue > 1000) { this.paymentForm.controls['price'].setValue(1000); }
       }
     );
+  }
+
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.focus();
   }
 
   initForm() {
@@ -41,11 +45,6 @@ export class PaymentFormComponent implements OnInit {
         Validators.pattern(/^\d+$/)
       ]]
     });
-  }
-
-  tryPhoneNumberAgain() {
-    console.log('output!', this.paymentForm.controls['phone'].value);
-
   }
 
   onSubmit() {
