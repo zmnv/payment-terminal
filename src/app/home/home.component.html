@@ -1,15 +1,17 @@
-<div *ngIf="providersList">
-  <p>Выберите оператора:</p>
+<div class="pay-layout__main__white">
 
-  <app-provider-card
-    *ngFor="let provider of providersList"
-    [title]="provider['title']"
-    [slug]="provider['slug']"
-  ></app-provider-card>
+  <div *ngIf="providersList">
+    <div class="mar-b-16">Выберите оператора:</div>
+
+    <app-provider-card
+      *ngFor="let provider of providersList"
+      [title]="provider['title']"
+      [slug]="provider['slug']"
+    ></app-provider-card>
+  </div>
+
+  <div *ngIf="!providersList">
+    Извините, не можем получить список операторов.
+  </div>
+
 </div>
-
-<div *ngIf="!providersList">
-  Извините, не можем получить список операторов.
-</div>
-
-<button (click)="getProvidersList()">Update</button>

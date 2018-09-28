@@ -1,10 +1,11 @@
-<p>
+<div class="pay-layout__navigation">
   <a routerLink="/">← выбрать другого оператора</a>
-</p>
+</div>
+<div class="pay-layout__main__white">
+  <div *ngIf="currentProvider">
+    <h2>{{currentProvider['title']}}</h2>
 
-<div *ngIf="currentProvider">
-  <h2>{{currentProvider['title']}}</h2>
+    <app-payment-form></app-payment-form>
 
-  <app-payment-form></app-payment-form>
-
+  </div>
 </div>

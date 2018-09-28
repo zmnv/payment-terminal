@@ -1,9 +1,23 @@
-.pay-layout__header {
-  margin-top: 128px;
+body {
+  background: #f7f4f4;
 }
 
-.pay-layout__main {
+.pay-layout__header {
+  margin-top: 88px;
+  margin-bottom: 24px;
+}
 
+.pay-layout__navigation {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.pay-layout__main__white {
+  padding: 32px;
+  background-color: #fff;
+  max-width: 640px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .pay-layout__footer {
