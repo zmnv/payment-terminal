@@ -67,7 +67,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
           data => {
             setTimeout(() => {
               this.setRequestState(false, true, false);
-              this.getRandomTimeError();
+              // this.getRandomTimeError();
 
               console.log('Успех! Добавлено в базу данных:', data);
             }, 800);

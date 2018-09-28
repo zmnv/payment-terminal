@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs/Subject';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
@@ -18,11 +17,18 @@ export class MockService {
   }
 
   postPayMoneyToProvider(operatorSlug, data) {
-    const result = {
+    const sendOrderData = {
       providerSlug: operatorSlug,
       order: data
     };
-    return this.http.post<PaymentData>(`${this.mockServer}/payments`, result);
+    const httpHeaders = {
+      headers: new HttpHeaders({
+        'Cache-control':  'no-cache',
+        'Expires': '0',
+        'Pragma': 'no-cache'
+      })
+    };
+    return this.http.post<PaymentData>(`${this.mockServer}/payments`, sendOrderData, httpHeaders);
   }
 
 }

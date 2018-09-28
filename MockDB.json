@@ -80,6 +80,46 @@
         "price": 1
       },
       "id": 7
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9999999999",
+        "price": 100
+      },
+      "id": 8
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9999924199",
+        "price": 11
+      },
+      "id": 9
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9999924199",
+        "price": 11
+      },
+      "id": 10
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "9999999999",
+        "price": 200
+      },
+      "id": 11
+    },
+    {
+      "providerSlug": "beeline",
+      "order": {
+        "phone": "2123121321",
+        "price": 1000
+      },
+      "id": 12
     }
   ]
 }
