@@ -2,23 +2,24 @@
 
   <app-loading *ngIf="requestState['isLoading']"></app-loading>
 
-  <div *ngIf="providersList" class="mar-b-24">
+  <div *ngIf="providersList">
     <div *ngIf="providersList.length" class="mar-b-16">Выберите оператора:</div>
     <app-provider-card
       *ngFor="let provider of providersList"
       [title]="provider['title']"
       [slug]="provider['slug']"
     ></app-provider-card>
+
+    <div class="pay-editor-providers mar-t-24">
+      <button class="pay-text-button font-size-small" *ngIf="!showEditor" (click)="toggleShowEditor()">Добавить провайдера</button>
+      <button class="pay-text-button font-size-small" *ngIf="showEditor" (click)="toggleShowEditor()">Скрыть форму</button>
+      <div class="mar-t-16" *ngIf="showEditor">
+        <app-providers-editor-form (handleSendFormComplete)="pushNewProviderToList($event)"></app-providers-editor-form>
+      </div>
+    </div>
+
   </div>
 
   <app-error *ngIf="requestState['isError']" (handleRefreshRequest)="getProvidersList()"></app-error>
-
-  <div class="pay-editor-providers">
-    <button class="pay-text-button font-size-small" *ngIf="!showEditor" (click)="toggleShowEditor()">Добавить провайдера</button>
-    <button class="pay-text-button font-size-small" *ngIf="showEditor" (click)="toggleShowEditor()">Скрыть форму</button>
-    <div class="mar-t-16" *ngIf="showEditor">
-      <app-providers-editor-form (handleSendFormComplete)="pushNewProviderToList($event)"></app-providers-editor-form>
-    </div>
-  </div>
 
 </div>

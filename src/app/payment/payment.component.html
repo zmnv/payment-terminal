@@ -11,6 +11,8 @@
       <b>{{currentProvider['title']}}</b>
       <button class="pay-text-button font-size-small" (click)="deleteProvider()">удалить</button>
     </h2>
+    <div class="pay-form__submit-error mar-b-16" *ngIf="cantDelete">Не могу удалить провайдера из списка</div>
+
     <app-payment-form [operatorSlug]="currentSlug" (handleSendFormComplete)="isPaymentSuccess($event)"></app-payment-form>
   </div>
 

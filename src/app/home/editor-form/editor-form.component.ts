@@ -89,6 +89,7 @@ export class ProvidersEditorFormComponent implements OnInit, AfterViewInit {
         this.handleSendFormComplete.emit(res);
       },
       err => {
+        this.setRequestState(false, false, true);
         console.log('addProvider() ERROR:', err);
       }
     );

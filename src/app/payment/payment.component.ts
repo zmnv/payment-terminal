@@ -21,6 +21,8 @@ export class PaymentPageComponent implements OnInit {
     isError: false
   };
 
+  cantDelete = false;
+
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private _Router: Router,
@@ -44,12 +46,12 @@ export class PaymentPageComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProvider = data.find(element => element['slug'] === slug);
-          console.log('currentProvider', this.currentProvider);
+
           this.requestState = {
             isLoading: false,
             isError: false
           };
-          if (!this.currentProvider) { this._Router.navigate(['404']); }
+          if (!this.currentProvider) { this._Router.navigate(['']); }
         },
         error => {
           this.requestState = {
@@ -65,6 +67,10 @@ export class PaymentPageComponent implements OnInit {
       console.log('Провайдер удалён:\n', data);
       this.reloadPage();
     }, error => {
+      this.cantDelete = true;
+      setTimeout(() => {
+        this.cantDelete = false;
+      }, 3000);
       console.log('Не могу удалить провайдера из списка:\n', error);
     });
   }
@@ -74,7 +80,7 @@ export class PaymentPageComponent implements OnInit {
     this.navigateToMainScreen();
   }
 
-  navigateToMainScreen(delay = 3000) {
+  navigateToMainScreen(delay = 1000) {
     this.redirectLoading = true;
     // задержка для сглаженного восприятия событий пользователем
     setTimeout(() => {

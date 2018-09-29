@@ -51,7 +51,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
         Validators.minLength(10),
         Validators.maxLength(10),
       ]],
-      price: [1, [
+      price: [null, [
         Validators.required,
         Validators.min(1),
         Validators.max(1000),
