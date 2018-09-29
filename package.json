@@ -6,8 +6,8 @@
     "ng": "ng",
     "start": "ng serve --hmr",
     "start-clear": "ng serve",
-    "build": "ng build --prod",
-    "mocks": "json-server --watch MockDB.json",
+    "build": "ng build --prod --build-optimizer",
+    "mocks": "json-server --watch MockDB.json --port 3011",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

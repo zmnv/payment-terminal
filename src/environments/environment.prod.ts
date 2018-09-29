@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   hmr: false,
-  apiCall: 'http://api.api'
+  apiCall: 'http://zmnv.ru:3011'
 };
