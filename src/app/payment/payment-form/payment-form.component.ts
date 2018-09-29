@@ -14,6 +14,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
   @Output() handleSendFormComplete: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('autofocus') private elementRef: ElementRef;
+  @ViewChild('thenfocus') private elementRefThen: ElementRef;
   paymentForm: FormGroup;
 
   requestState = {
@@ -32,8 +33,13 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
 
     this.initForm();
+    this.paymentForm.controls['phone'].statusChanges.subscribe(
+      status => {
+        if (status === 'VALID') { this.elementRefThen.nativeElement.focus();}
+      }
+    );
     this.paymentForm.controls['price'].valueChanges.subscribe(
-      (changedValue) => {
+      changedValue => {
         if (changedValue === 0 || changedValue < 0) { this.paymentForm.controls['price'].setValue(1); }
         if (changedValue > 1000) { this.paymentForm.controls['price'].setValue(1000); }
       }

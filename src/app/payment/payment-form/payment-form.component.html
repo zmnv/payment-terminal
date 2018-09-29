@@ -20,6 +20,7 @@
       class="pay-form__input pay-form__input_price"
       type="number"
       formControlName="price"
+      #thenfocus
     />
     <div class="pay-form__control__description">Мы принимаем платежи от 1 до 1 000 руб.</div>
     <div *ngIf="showValidationsError && paymentForm.get('price').invalid" class="pay-form__submit-error">
