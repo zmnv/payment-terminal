@@ -14,6 +14,8 @@ export class PaymentPageComponent implements OnInit {
   currentProvider: ProvidersList;
   currentSlug: string;
 
+  redirectLoading = false;
+
   requestState = {
     isLoading: false,
     isError: false
@@ -55,6 +57,16 @@ export class PaymentPageComponent implements OnInit {
           };
         }
       );
+  }
+
+  isPaymentSuccess(data) {
+    this.redirectLoading = true;
+    console.log('Успех! Платёж принят, спасибо!\n', data);
+
+    setTimeout(() => {
+      this._Router.navigate(['']);
+      this.redirectLoading = false;
+    }, 3000);
   }
 
 }

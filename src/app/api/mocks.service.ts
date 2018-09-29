@@ -17,16 +17,15 @@ export class MockService {
   }
 
   postPayMoneyToProvider(operatorSlug, data) {
+    const requestURL = Math.random() >= 0.5
+      ? `${this.mockServer}/payments`
+      : `${this.mockServer}/payments/error`;
+
     const sendOrderData = {
       provider_slug: operatorSlug,
       payment_data: data
     };
-    const httpHeaders = {
-      headers: {
-        'Cache-control':  'no-store',
-      }
-    };
-    return this.http.post<PaymentData>(`${this.mockServer}/payments`, sendOrderData, httpHeaders);
+    return this.http.post<PaymentData>(requestURL, sendOrderData);
   }
 
 }

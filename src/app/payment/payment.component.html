@@ -8,9 +8,14 @@
 
   <div *ngIf="currentProvider">
     <h2 class="mar-b-8"><b>{{currentProvider['title']}}</b></h2>
-    <app-payment-form [operatorSlug]="currentSlug"></app-payment-form>
+    <app-payment-form [operatorSlug]="currentSlug" (handleSendFormComplete)="isPaymentSuccess($event)"></app-payment-form>
   </div>
 
   <app-error *ngIf="requestState['isError']" (handleRefreshRequest)="getProviderBySlug(currentSlug)"></app-error>
 
+</div>
+
+<div *ngIf="redirectLoading" class="mar-t-16 pay-layout__redirect-waiter">
+  <app-loading></app-loading>
+  <div>Переходим к списку операторов...</div>
 </div>

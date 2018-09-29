@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import { MockService } from '../../api/mocks.service';
@@ -10,6 +10,7 @@ import { MockService } from '../../api/mocks.service';
 })
 export class PaymentFormComponent implements OnInit, AfterViewInit {
   @Input() operatorSlug: string;
+  @Output() handleSendFormComplete: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('autofocus') private elementRef: ElementRef;
   paymentForm: FormGroup;
@@ -62,19 +63,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
     if (this.paymentForm.valid) {
       this.showPhoneValidationError = false;
       this.setRequestState(true, false, false);
-
-      this._MockService.postPayMoneyToProvider(this.operatorSlug, this.paymentForm.value)
-        .subscribe(
-          data => {
-            setTimeout(() => {
-              this.setRequestState(false, true, false);
-              // this.getRandomTimeError();
-
-              console.log('Успех! Добавлено в базу данных:', data);
-            }, 800);
-          },
-          error => this.setRequestState(false, false, true)
-        );
+      this.httpSendPayment();
     } else {
       this.showPhoneValidationError = true;
     }
@@ -88,8 +77,14 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
     };
   }
 
-  getRandomTimeError() {
-    if (Math.random() >= 0.5) { this.setRequestState(false, false, true); }
+  httpSendPayment() {
+    this._MockService.postPayMoneyToProvider(this.operatorSlug, this.paymentForm.value)
+    .subscribe(
+      data => {
+        this.setRequestState(false, true, false);
+        this.handleSendFormComplete.emit(data);
+      },
+      error => this.setRequestState(false, false, true)
+    );
   }
-
 }
