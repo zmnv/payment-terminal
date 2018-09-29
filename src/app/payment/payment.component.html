@@ -7,7 +7,10 @@
   <app-loading *ngIf="requestState['isLoading']"></app-loading>
 
   <div *ngIf="currentProvider">
-    <h2 class="mar-b-8"><b>{{currentProvider['title']}}</b></h2>
+    <h2 class="mar-b-8">
+      <b>{{currentProvider['title']}}</b>
+      <button class="pay-text-button font-size-small" (click)="deleteProvider()">удалить</button>
+    </h2>
     <app-payment-form [operatorSlug]="currentSlug" (handleSendFormComplete)="isPaymentSuccess($event)"></app-payment-form>
   </div>
 

@@ -13,6 +13,8 @@ export class HomePageComponent implements OnInit {
 
   providersList: ProvidersList[];
 
+  showEditor = false;
+
   requestState = {
     isLoading: false,
     isError: false
@@ -45,6 +47,14 @@ export class HomePageComponent implements OnInit {
         };
       }
     );
+  }
+
+  toggleShowEditor() {
+    this.showEditor = !this.showEditor;
+  }
+
+  pushNewProviderToList(provider: ProvidersList) {
+    this.providersList.push(provider);
   }
 
 }

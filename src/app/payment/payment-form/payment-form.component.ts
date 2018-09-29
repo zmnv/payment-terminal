@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { MockService } from '../../api/mocks.service';
 
 @Component({
   selector: 'app-payment-form',
   templateUrl: './payment-form.component.html',
-  styleUrls: ['./payment-form.component.scss']
+  styleUrls: ['./payment-form.component.scss'],
+  providers: [ MockService ]
 })
 export class PaymentFormComponent implements OnInit, AfterViewInit {
   @Input() operatorSlug: string;
@@ -21,7 +22,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
     isError: false
   };
 
-  showPhoneValidationError = false;
+  showValidationsError = false;
 
   constructor(
     private _MockService: MockService,
@@ -61,7 +62,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     if (this.paymentForm.valid) {
-      this.showPhoneValidationError = false;
+      this.showValidationsError = false;
       this.setRequestState(true, false, false);
 
       // задержка для наглядности ожидания ответа от сервера
@@ -70,7 +71,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
       }, 1000);
 
     } else {
-      this.showPhoneValidationError = true;
+      this.showValidationsError = true;
     }
   }
 

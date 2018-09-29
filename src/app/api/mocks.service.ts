@@ -16,6 +16,14 @@ export class MockService {
     return this.http.get<ProvidersList[]>(`${this.mockServer}/providers`);
   }
 
+  addProvider(provider: ProvidersList) {
+    return this.http.post<ProvidersList>(`${this.mockServer}/providers`, provider);
+  }
+
+  deleteProvider(provider_id: number) {
+    return this.http.delete(`${this.mockServer}/providers/${provider_id}`);
+  }
+
   postPayMoneyToProvider(operatorSlug, data) {
     const requestURL = Math.random() >= 0.5
       ? `${this.mockServer}/payments`
@@ -30,8 +38,8 @@ export class MockService {
     return this.http.post<PaymentData>(requestURL, sendOrderData);
   }
 
-  deleteThatPaymentInDB() {
-    return this.http.delete(`${this.mockServer}/payments/1`).subscribe(data => {
+  deleteThatPaymentInDB(param = '/1') {
+    return this.http.delete(`${this.mockServer}/payments${param}`).subscribe(data => {
       console.log('Платёж удалён:\n', data);
     }, error => {
       console.log('Не могу удалить этот платёж из списка:\n', error);

@@ -44,6 +44,7 @@ export class PaymentPageComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProvider = data.find(element => element['slug'] === slug);
+          console.log('currentProvider', this.currentProvider);
           this.requestState = {
             isLoading: false,
             isError: false
@@ -59,15 +60,33 @@ export class PaymentPageComponent implements OnInit {
       );
   }
 
-  isPaymentSuccess(data) {
-    this.redirectLoading = true;
-    console.log('Успех! Платёж принят, спасибо!\n', data);
+  deleteProvider() {
+    this._MockService.deleteProvider(this.currentProvider.id).subscribe(data => {
+      console.log('Провайдер удалён:\n', data);
+      this.reloadPage();
+    }, error => {
+      console.log('Не могу удалить провайдера из списка:\n', error);
+    });
+  }
 
+  isPaymentSuccess(data) {
+    console.log('Успех! Платёж принят, спасибо!\n', data);
+    this.navigateToMainScreen();
+  }
+
+  navigateToMainScreen(delay = 3000) {
+    this.redirectLoading = true;
     // задержка для сглаженного восприятия событий пользователем
     setTimeout(() => {
       this._Router.navigate(['']);
       this.redirectLoading = false;
-    }, 3000);
+    }, delay);
+  }
+
+  reloadPage() {
+    this.redirectLoading = true;
+    this.redirectLoading = false;
+    location.href = '/';
   }
 
 }

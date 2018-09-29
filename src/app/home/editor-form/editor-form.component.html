@@ -1,0 +1,39 @@
+<form [formGroup]="providersEditorForm" (submit)="onSubmit()">
+  <div class="pay-form__control">
+    <input
+      class="pay-form__input"
+      type="text"
+      formControlName="provider_title"
+      placeholder="Название оператора"
+      #autofocus
+    />
+    <div *ngIf="showValidationsError && providersEditorForm.get('provider_title').invalid" class="pay-form__submit-error">
+      ↑ Введите корректное название (от 1 до 128 символов, только латинские и кириллические буквы, цифры или дефис).
+    </div>
+  </div>
+
+  <div class="pay-form__control">
+    <input
+      class="pay-form__input"
+      type="text"
+      formControlName="provider_slug"
+      placeholder="URL Адрес (только slug)"
+    />
+    <div *ngIf="showValidationsError && providersEditorForm.get('provider_slug').invalid" class="pay-form__submit-error" >
+      ↑ Напишите от 3 д 64 символов (только латинские буквы, цифры или дефис).
+    </div>
+  </div>
+
+  <button
+    *ngIf="!requestState.isLoading"
+    class="pay-button pay-button_default"
+    type="submit"
+  >Добавить провайдера</button>
+
+  <app-loading *ngIf="requestState.isLoading"></app-loading>
+
+  <div *ngIf="requestState.isError" class="pay-form__submit-error">
+    <b>Что-то пошло не так, попробуйте еще раз...</b>
+  </div>
+
+</form>

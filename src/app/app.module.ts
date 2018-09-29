@@ -16,6 +16,7 @@ import { RequestCache } from './api/request-cache.service';
 import { CachingInterceptor } from './api/cache-interceptor.service';
 import { ErrorHandlerComponent } from './api/error-handler/error-handler.component';
 import { LoadingHandlerComponent } from './api/loading-handler/loading-handler.component';
+import { ProvidersEditorFormComponent } from './home/editor-form/editor-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoadingHandlerComponent } from './api/loading-handler/loading-handler.c
     ProviderCardComponent,
     PaymentFormComponent,
     ErrorHandlerComponent,
-    LoadingHandlerComponent
+    LoadingHandlerComponent,
+    ProvidersEditorFormComponent
   ],
   imports: [
     NgxMaskModule.forRoot(),

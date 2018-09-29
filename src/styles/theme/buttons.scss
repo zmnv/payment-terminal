@@ -1,0 +1,71 @@
+@import '../vars/entry';
+
+.pay-button {
+  border: 0;
+  padding: 8px 15px;
+  padding-bottom: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 4px;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.pay-button_green {
+  background: $color-button;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.16);
+
+  &:hover {
+    background: $color-button-hover;
+  }
+  &:focus {
+    background: $color-button-hover;
+    box-shadow: 0 0 0 3px $color-button-focus;
+  }
+  &:active {
+    background: $color-button-active;
+  }
+}
+
+.pay-button_default {
+  background: $color-link;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.16);
+
+  &:hover {
+    background: $color-link-hover;
+  }
+  &:focus {
+    background: $color-link-hover;
+    box-shadow: 0 0 0 3px $color-link-focus;
+  }
+  &:active {
+    background: $color-link-active;
+  }
+}
+
+.pay-text-button {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: inline;
+  border-bottom: 1px dotted;
+  color: $color-text-gray;
+
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+  &:focus {
+    color: $color-link-hover;
+    border-bottom-color: transparent;
+  }
+  &:active {
+    color: $color-link-active;
+  }
+}

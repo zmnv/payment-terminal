@@ -1,4 +1,4 @@
-<form [formGroup]="paymentForm" (submit)="onSubmit()" novalidate>
+<form [formGroup]="paymentForm" (submit)="onSubmit()">
   <div class="pay-form__control">
     <label class="pay-form__label" for="phone">Номер телефона:</label>
     <input
@@ -10,7 +10,7 @@
       mask="(000) 000 00 00"
       #autofocus
     />
-    <div *ngIf="showPhoneValidationError && paymentForm.get('phone').invalid" class="pay-form__submit-error">
+    <div *ngIf="showValidationsError && paymentForm.get('phone').invalid" class="pay-form__submit-error">
       ↑ Введите корректный номер телефона.
     </div>
   </div>
@@ -22,12 +22,19 @@
       formControlName="price"
     />
     <div class="pay-form__control__description">Мы принимаем платежи от 1 до 1 000 руб.</div>
-    <div *ngIf="showPhoneValidationError && paymentForm.get('price').invalid" class="pay-form__submit-error">
+    <div *ngIf="showValidationsError && paymentForm.get('price').invalid" class="pay-form__submit-error">
       ↑ Введите целое число.
     </div>
   </div>
 
-  <button *ngIf="!requestState.isLoading && !requestState.isSuccess" class="pay-form__submit-button" type="submit">Пополнить</button>
+  <button
+    *ngIf="!requestState.isLoading && !requestState.isSuccess"
+    class="pay-button pay-button_green pay-form__submit-button"
+    type="submit"
+  >
+    Пополнить
+  </button>
+
   <app-loading *ngIf="requestState.isLoading"></app-loading>
 
   <div *ngIf="requestState.isError" class="pay-form__submit-error">

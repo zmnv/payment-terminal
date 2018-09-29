@@ -15,7 +15,7 @@ a {
   }
 
   &:active {
-    color: rgba(0, 0, 0, .54);
+    color: $color-text-gray;
   }
 }
 
@@ -60,7 +60,6 @@ em {
   font-style: italic;
 }
 
-.font-small-footer {
-  font-size: 11px;
-  color: rgba(0, 0, 0, .32);
+.font-size-small {
+  font-size: 13px;
 }
