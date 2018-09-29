@@ -18,15 +18,13 @@ export class MockService {
 
   postPayMoneyToProvider(operatorSlug, data) {
     const sendOrderData = {
-      providerSlug: operatorSlug,
-      order: data
+      provider_slug: operatorSlug,
+      payment_data: data
     };
     const httpHeaders = {
-      headers: new HttpHeaders({
-        'Cache-control':  'no-cache',
-        'Expires': '0',
-        'Pragma': 'no-cache'
-      })
+      headers: {
+        'Cache-control':  'no-store',
+      }
     };
     return this.http.post<PaymentData>(`${this.mockServer}/payments`, sendOrderData, httpHeaders);
   }

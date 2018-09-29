@@ -12,6 +12,8 @@ export class CachingInterceptor implements HttpInterceptor {
   constructor(private cache: RequestCache) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    if (!this.isCachable(req)) { return next.handle(req); }
+
     const cachedResponse = this.cache.get(req);
     return cachedResponse ? Observable.of(cachedResponse) : this.sendRequest(req, next, this.cache);
   }
@@ -27,5 +29,9 @@ export class CachingInterceptor implements HttpInterceptor {
         }
       })
     );
+  }
+
+  isCachable(req: HttpRequest<any>) {
+    return req.method === 'GET';
   }
 }

@@ -28,6 +28,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
+
     this.initForm();
     this.paymentForm.controls['price'].valueChanges.subscribe(
       (changedValue) => {

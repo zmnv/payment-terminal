@@ -120,6 +120,94 @@
         "price": 1000
       },
       "id": 12
+    },
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "9999999999",
+        "price": 1
+      },
+      "id": 13
+    },
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "9999999999",
+        "price": 1
+      },
+      "id": 14
+    },
+    {
+      "providerSlug": "mts",
+      "order": {
+        "phone": "9999999994",
+        "price": 100
+      },
+      "id": 15
+    },
+    {
+      "provider_slug": "mts",
+      "payment_data": {
+        "phone": "9999956565",
+        "price": 1000
+      },
+      "id": 16
+    },
+    {
+      "provider_slug": "mts",
+      "payment_data": {
+        "phone": "9999956565",
+        "price": 1000
+      },
+      "id": 17
+    },
+    {
+      "provider_slug": "mts",
+      "payment_data": {
+        "phone": "4546546546",
+        "price": 1
+      },
+      "id": 18
+    },
+    {
+      "provider_slug": "mts",
+      "payment_data": {
+        "phone": "9541213123",
+        "price": 1
+      },
+      "id": 19
+    },
+    {
+      "provider_slug": "mts",
+      "payment_data": {
+        "phone": "9541213123",
+        "price": 1
+      },
+      "id": 20
+    },
+    {
+      "provider_slug": "beeline",
+      "payment_data": {
+        "phone": "1234567899",
+        "price": 1000
+      },
+      "id": 21
+    },
+    {
+      "provider_slug": "beeline",
+      "payment_data": {
+        "phone": "1234567899",
+        "price": 800
+      },
+      "id": 22
+    },
+    {
+      "provider_slug": "beeline",
+      "payment_data": {
+        "phone": "1234567899",
+        "price": 120
+      },
+      "id": 23
     }
   ]
 }
