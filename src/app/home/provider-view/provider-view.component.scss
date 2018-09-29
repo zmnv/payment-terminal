@@ -12,3 +12,27 @@
 .pay-provider__title {
 
 }
+
+.pay-provider__controls {
+  display: inline-block;
+  margin-left: 4px;
+}
+
+.pay-provider__controls-button {
+  opacity: 0;
+}
+
+
+.pay-provider_hover:hover .pay-provider__controls-button {
+  opacity: 1;
+}
+
+.pay-provider__controls-button {
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.pay-provider__controls_error {
+  display: inline-block;
+  color: red;
+}

@@ -1,17 +1,17 @@
 {
   "providers": [
     {
-      "id": 7870059,
+      "id": 1,
       "title": "МТС",
       "slug": "mts"
     },
     {
-      "id": 6376718,
+      "id": 2,
       "title": "Билайн",
       "slug": "beeline"
     },
     {
-      "id": 9811941,
+      "id": 3,
       "title": "Мегафон",
       "slug": "megafon"
     }

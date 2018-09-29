@@ -62,19 +62,6 @@ export class PaymentPageComponent implements OnInit {
       );
   }
 
-  deleteProvider() {
-    this._MockService.deleteProvider(this.currentProvider.id).subscribe(data => {
-      console.log('Провайдер удалён:\n', data);
-      this.reloadPage();
-    }, error => {
-      this.cantDelete = true;
-      setTimeout(() => {
-        this.cantDelete = false;
-      }, 3000);
-      console.log('Не могу удалить провайдера из списка:\n', error);
-    });
-  }
-
   isPaymentSuccess(data) {
     console.log('Успех! Платёж принят, спасибо!\n', data);
     this.navigateToMainScreen();
@@ -87,12 +74,6 @@ export class PaymentPageComponent implements OnInit {
       this._Router.navigate(['']);
       this.redirectLoading = false;
     }, delay);
-  }
-
-  reloadPage() {
-    this.redirectLoading = true;
-    this.redirectLoading = false;
-    location.href = '/';
   }
 
 }

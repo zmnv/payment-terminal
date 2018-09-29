@@ -77,13 +77,13 @@ export class ProvidersEditorFormComponent implements OnInit, AfterViewInit {
       return Math.floor(Math.random() * (max - min) + min);
     };
 
-    const providerIt: ProvidersList = {
+    const provider: ProvidersList = {
       id: getRandomId(1000000, 9999999),
       title: this.providersEditorForm.controls['provider_title'].value,
-      slug: this.providersEditorForm.controls['provider_slug'].value,
+      slug: this.providersEditorForm.controls['provider_slug'].value.toLowerCase(),
     };
 
-    this._MockService.addProvider(providerIt).subscribe(
+    this._MockService.addProvider(provider).subscribe(
       res => {
         this.setRequestState(false, true, false);
         this.handleSendFormComplete.emit(res);

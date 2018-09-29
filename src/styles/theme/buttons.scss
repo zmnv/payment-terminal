@@ -35,14 +35,14 @@
   text-shadow: 0 1px 1px rgba(0,0,0,.16);
 
   &:hover {
-    background: $color-link-hover;
+    background: rgb(3, 90, 219);
   }
   &:focus {
-    background: $color-link-hover;
-    box-shadow: 0 0 0 3px $color-link-focus;
+    background: rgb(3, 90, 219);
+    box-shadow: 0 0 0 3px rgba(3, 89, 219, 0.24);
   }
   &:active {
-    background: $color-link-active;
+    background: rgb(0, 61, 153);
   }
 }
 
@@ -68,4 +68,15 @@
   &:active {
     color: $color-link-active;
   }
+}
+
+.pay-text-button_danger {
+  &:hover, &:focus {
+    color: red;
+  }
+
+}
+
+.pay-text-button_noborder {
+  border-bottom-color: transparent;
 }

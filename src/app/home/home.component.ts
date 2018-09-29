@@ -55,6 +55,11 @@ export class HomePageComponent implements OnInit {
 
   pushNewProviderToList(provider: ProvidersList) {
     this.providersList.push(provider);
+    this.showEditor = false;
+  }
+
+  deleteProviderFromList(providerId) {
+    this.providersList = this.providersList.filter(provider => provider.id !== providerId);
   }
 
 }

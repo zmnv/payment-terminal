@@ -6,8 +6,8 @@
     <div *ngIf="providersList.length" class="mar-b-16">Выберите оператора:</div>
     <app-provider-card
       *ngFor="let provider of providersList"
-      [title]="provider['title']"
-      [slug]="provider['slug']"
+      [provider]="provider"
+      (handleDeleteProvider)="deleteProviderFromList($event)"
     ></app-provider-card>
 
     <div class="pay-editor-providers mar-t-24">

@@ -1,3 +1,15 @@
-<a class="pay-provider" [routerLink]="['payment', slug]" *ngIf="title && slug" title="Перейти к оплате">
-  <span class="pay-provider__title">{{title}}</span>
-</a>
+<div class="pay-provider_hover">
+  <a class="pay-provider" [routerLink]="['payment', provider['slug']]" *ngIf="provider" title="Перейти к оплате">
+    <span class="pay-provider__title">{{provider['title']}}</span>
+  </a>
+  <button *ngIf="!requestState.isError && !requestState.isLoading && !showControls && denyToDeleteProviders()" class="pay-provider__controls-button pay-text-button pay-text-button_noborder" tabindex="-1"  (click)="setShowControls(true)">x</button>
+  <div *ngIf="showControls" class="pay-provider__controls">
+    <button (click)="deleteThisProvider()" class="pay-provider__controls-button pay-text-button pay-text-button_danger">Удалить</button>
+    <button (click)="cancelControls()" class="pay-provider__controls-button pay-text-button">Не удалять</button>
+  </div>
+  <div *ngIf="requestState.isLoading && !showControls" class="pay-provider__controls_error pad-l-8"> удаляю...</div>
+  <div *ngIf="requestState.isError && !showControls" class="pay-provider__controls_error pad-l-8">
+    <span class="mar-r-8">Ошибка</span>
+    <button (click)="setShowControls(true)" class="pad-l-16 pay-text-button">Еще раз</button>
+  </div>
+</div>
