@@ -63,6 +63,7 @@ export class PaymentPageComponent implements OnInit {
     this.redirectLoading = true;
     console.log('Успех! Платёж принят, спасибо!\n', data);
 
+    // задержка для сглаженного восприятия событий пользователем
     setTimeout(() => {
       this._Router.navigate(['']);
       this.redirectLoading = false;

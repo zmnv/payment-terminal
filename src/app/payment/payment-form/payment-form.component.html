@@ -27,15 +27,15 @@
     </div>
   </div>
 
-  <button *ngIf="!requestState.isLoading" class="pay-form__submit-button" type="submit">Пополнить</button>
+  <button *ngIf="!requestState.isLoading && !requestState.isSuccess" class="pay-form__submit-button" type="submit">Пополнить</button>
   <app-loading *ngIf="requestState.isLoading"></app-loading>
 
   <div *ngIf="requestState.isError" class="pay-form__submit-error">
-    Что-то пошло не так, попробуйте еще раз...
+    <b>Что-то пошло не так, попробуйте еще раз...</b>
   </div>
 
   <div *ngIf="requestState.isSuccess" class="pay-form__submit-success">
-    Успешно! Счёт пополнен.
+    <b>Счёт успешно пополнен!</b>
   </div>
 
 </form>

@@ -63,7 +63,12 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
     if (this.paymentForm.valid) {
       this.showPhoneValidationError = false;
       this.setRequestState(true, false, false);
-      this.httpSendPayment();
+
+      // задержка для наглядности ожидания ответа от сервера
+      setTimeout(() => {
+        this.httpSendPayment();
+      }, 1000);
+
     } else {
       this.showPhoneValidationError = true;
     }
@@ -83,6 +88,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
       data => {
         this.setRequestState(false, true, false);
         this.handleSendFormComplete.emit(data);
+        this._MockService.deleteThatPaymentInDB();
       },
       error => this.setRequestState(false, false, true)
     );

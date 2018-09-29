@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
@@ -22,10 +22,20 @@ export class MockService {
       : `${this.mockServer}/payments/error`;
 
     const sendOrderData = {
+      date_created: new Date(),
       provider_slug: operatorSlug,
-      payment_data: data
+      payment_data: data,
     };
+
     return this.http.post<PaymentData>(requestURL, sendOrderData);
+  }
+
+  deleteThatPaymentInDB() {
+    return this.http.delete(`${this.mockServer}/payments/1`).subscribe(data => {
+      console.log('Платёж удалён:\n', data);
+    }, error => {
+      console.log('Не могу удалить этот платёж из списка:\n', error);
+    });
   }
 
 }
