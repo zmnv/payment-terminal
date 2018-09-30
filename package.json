@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --hmr",
     "start-clear": "ng serve",
-    "build": "ng build --prod --build-optimizer",
+    "build": "ng build --prod --build-optimizer --base-href=/payment-terminal/",
     "mocks": "json-server --watch MockDB.json --port 3011",
     "test": "ng test",
     "lint": "ng lint",
