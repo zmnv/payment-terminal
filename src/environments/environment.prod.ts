@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   hmr: false,
-  apiCall: 'http://api.zmnv.ru/payment-terminal/'
+  apiCall: 'https://api.zmnv.ru'
 };
