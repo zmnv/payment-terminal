@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MockService } from '../api/mocks.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProvidersList } from '../interfaces';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-payment',
@@ -26,7 +27,8 @@ export class PaymentPageComponent implements OnInit {
   constructor(
     private _ActivatedRoute: ActivatedRoute,
     private _Router: Router,
-    private _MockService: MockService
+    private _MockService: MockService,
+    private _Title: Title
   ) { }
 
   ngOnInit() {
@@ -46,12 +48,13 @@ export class PaymentPageComponent implements OnInit {
       .subscribe(
         data => {
           this.currentProvider = data.find(element => element['slug'] === slug);
+          if (!this.currentProvider) { this._Router.navigate(['']); }
 
+          this._Title.setTitle(`${this.currentProvider.title} — пополнить баланс`);
           this.requestState = {
             isLoading: false,
             isError: false
           };
-          if (!this.currentProvider) { this._Router.navigate(['']); }
         },
         error => {
           this.requestState = {

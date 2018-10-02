@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MockService } from '../api/mocks.service';
 import { ProvidersList } from '../interfaces';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -20,9 +21,13 @@ export class HomePageComponent implements OnInit {
     isError: false
   };
 
-  constructor( private _MockService: MockService ) {}
+  constructor(
+    private _MockService: MockService,
+    private _Title: Title
+    ) {}
 
   ngOnInit() {
+    this._Title.setTitle('Пополнить баланс');
     this.getProvidersList();
   }
 
