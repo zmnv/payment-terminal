@@ -18,17 +18,23 @@ import { ErrorHandlerComponent } from './api/error-handler/error-handler.compone
 import { LoadingHandlerComponent } from './api/loading-handler/loading-handler.component';
 import { ProvidersEditorFormComponent } from './home/editor-form/editor-form.component';
 
+const PAGES = [
+  HomePageComponent,
+  PaymentPageComponent,
+  NotfoundPageComponent,
+]
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    PaymentPageComponent,
-    NotfoundPageComponent,
+    ...PAGES,
     ProviderCardComponent,
+
     PaymentFormComponent,
+    ProvidersEditorFormComponent,
+
     ErrorHandlerComponent,
     LoadingHandlerComponent,
-    ProvidersEditorFormComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +46,12 @@ import { ProvidersEditorFormComponent } from './home/editor-form/editor-form.com
     ]),
     HttpClientModule,
     ReactiveFormsModule,
+
     NgxMaskModule.forRoot()
   ],
   providers: [
     Title,
+
     RequestCache,
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ],
