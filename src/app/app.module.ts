@@ -31,16 +31,16 @@ import { ProvidersEditorFormComponent } from './home/editor-form/editor-form.com
     ProvidersEditorFormComponent
   ],
   imports: [
-    NgxMaskModule.forRoot(),
     BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent, pathMatch: 'full'},
       { path: 'payment/:slug', component: PaymentPageComponent },
       { path: '404', component: NotfoundPageComponent },
       { path: '**', redirectTo: '/404' },
-    ])
+    ]),
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     RequestCache,

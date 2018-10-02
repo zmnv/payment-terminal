@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { fakeAsync } from '@angular/core/testing';
 
 describe('payment-terminal App', () => {
   let page: AppPage;
@@ -7,8 +8,4 @@ describe('payment-terminal App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
-  });
 });
