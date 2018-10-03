@@ -6,7 +6,6 @@ import { MockService } from '../../api/mocks.service';
 @Component({
   selector: 'app-payment-form',
   templateUrl: './payment-form.component.html',
-  styleUrls: ['./payment-form.component.scss'],
   providers: [ MockService ]
 })
 export class PaymentFormComponent implements OnInit, AfterViewInit {

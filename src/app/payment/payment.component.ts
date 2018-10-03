@@ -7,7 +7,6 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss'],
   providers: [ MockService ]
 })
 export class PaymentPageComponent implements OnInit {

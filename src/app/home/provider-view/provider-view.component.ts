@@ -1,12 +1,12 @@
 import { MockService } from './../../api/mocks.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProvidersList } from '../../interfaces';
 
 @Component({
   selector: 'app-provider-card',
   templateUrl: './provider-view.component.html',
   styleUrls: ['./provider-view.component.scss'],
-  // providers: [ MockService ]
+  providers: [ MockService ]
 })
 
 export class ProviderCardComponent {

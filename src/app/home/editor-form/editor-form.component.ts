@@ -1,12 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { MockService } from '../../api/mocks.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { MockService } from '../../api/mocks.service';
 import { ProvidersList } from '../../interfaces';
 
 @Component({
   selector: 'app-providers-editor-form',
   templateUrl: './editor-form.component.html',
-  styleUrls: ['./editor-form.component.scss'],
   providers: [ MockService ]
 })
 export class ProvidersEditorFormComponent implements OnInit, AfterViewInit {
@@ -26,7 +26,7 @@ export class ProvidersEditorFormComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private _MockService: MockService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.initForm();

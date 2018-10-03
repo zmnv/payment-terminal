@@ -8,7 +8,6 @@ import { ProvidersList, PaymentData } from '../interfaces';
 @Injectable()
 export class MockService {
   mockServer = environment.apiCall;
-  providersListCache: ProvidersList[];
 
   constructor(private http: HttpClient) {}
 
