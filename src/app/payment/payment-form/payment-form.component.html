@@ -24,7 +24,7 @@
     />
     <div class="pay-form__control__description">Мы принимаем платежи от 1 до 1 000 руб.</div>
     <div *ngIf="showValidationsError && paymentForm.get('price').invalid" class="pay-form__submit-error">
-      ↑ Введите целое число.
+      ↑ Введите число в рублях или с копейками
     </div>
   </div>
 
