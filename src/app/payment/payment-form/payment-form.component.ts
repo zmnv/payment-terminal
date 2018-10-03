@@ -12,8 +12,8 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
   @Input() operatorSlug: string;
   @Output() handleSendFormComplete: EventEmitter<any> = new EventEmitter<any>();
 
-  @ViewChild('autofocus') private elementRef: ElementRef;
-  @ViewChild('thenfocus') private elementRefThen: ElementRef;
+  @ViewChild('autofocus') private refPhoneInput: ElementRef;
+  @ViewChild('thenfocus') private refPriceInput: ElementRef;
   paymentForm: FormGroup;
 
   requestState = {
@@ -34,19 +34,19 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
     this.initForm();
     this.paymentForm.controls['phone'].statusChanges.subscribe(
       status => {
-        if (status === 'VALID') { this.elementRefThen.nativeElement.focus();}
+        if (status === 'VALID') this.refPriceInput.nativeElement.focus();
       }
     );
     this.paymentForm.controls['price'].valueChanges.subscribe(
       changedValue => {
-        if (changedValue === 0 || changedValue < 0) { this.paymentForm.controls['price'].setValue(1); }
-        if (changedValue > 1000) { this.paymentForm.controls['price'].setValue(1000); }
+        if (changedValue === 0 || changedValue < 0) this.paymentForm.controls['price'].setValue(1);
+        if (changedValue > 1000) this.paymentForm.controls['price'].setValue(1000);
       }
     );
   }
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.focus();
+    this.refPhoneInput.nativeElement.focus();
   }
 
   initForm() {
@@ -75,9 +75,7 @@ export class PaymentFormComponent implements OnInit, AfterViewInit {
         this.httpSendPayment();
       }, 1000);
 
-    } else {
-      this.showValidationsError = true;
-    }
+    } else this.showValidationsError = true;
   }
 
   setRequestState(isLoading, isSuccess, isError) {

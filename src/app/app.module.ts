@@ -22,7 +22,7 @@ const PAGES = [
   HomePageComponent,
   PaymentPageComponent,
   NotfoundPageComponent,
-]
+];
 
 @NgModule({
   declarations: [
