@@ -1,5 +1,5 @@
 # 1. Рефакторинг
-## [Решение → /refactoring/REFACTORING.MD](https://github.com/zmnv/payment-terminal/blob/master/refactoring/REFACTORING.MD)
+### [Решение → /refactoring/REFACTORING.MD](https://github.com/zmnv/payment-terminal/blob/master/refactoring/REFACTORING.MD)
 
 # 2. Платёжный терминал пополнения счёта
 
