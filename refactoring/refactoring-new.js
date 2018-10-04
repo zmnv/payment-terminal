@@ -7,6 +7,8 @@
 
 function funcNew(input, a, b) {
 
+  // здесь можно поставить ограничение максимум 1 символ
+  // сейчас нет ограничения — это расширяет функционал поиска
   const aIndex = input.lastIndexOf(a);
   const bIndex = input.lastIndexOf(b);
 
