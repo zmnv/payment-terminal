@@ -3,7 +3,7 @@
   <app-loading *ngIf="requestState['isLoading']"></app-loading>
 
   <div *ngIf="providersList">
-    <div *ngIf="providersList.length" class="mar-b-16">Выберите оператора:</div>
+    <div *ngIf="providersList.length" class="mar-b-16">Выберите провайдера:</div>
     <app-provider-card
       *ngFor="let provider of providersList"
       [provider]="provider"
